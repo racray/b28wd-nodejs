@@ -1,5 +1,5 @@
 import express from 'express';
-import { GetMovie, PostMovieById, GetMovieById, DeleteMovieById, EditMovieById } from "../GetMovie.js";
+import { GetMovie, PostMovieById, GetMovieById, DeleteMovieById, EditMovieById } from "../Helper.js";
 const router = express.Router();
 
 router.route('/')
