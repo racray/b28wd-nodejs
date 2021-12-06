@@ -7,7 +7,7 @@ import bcrypt from 'bcrypt';
 router.route('/signup')
 .post(async (request, response) => {
 
-    const {username,password} = request.body;
+    const {username,password,firstName,lastName} = request.body;
 
 
     const userNameDB = await CheckUserName(username)
@@ -27,7 +27,7 @@ router.route('/signup')
     const hashPassword = await genPassword(password);
     console.log(hashPassword);
 
-    const result = await PostUsers({username, password: hashPassword});
+    const result = await PostUsers({username, password: hashPassword,firstName,lastName});
     response.send(result);
 })
 
