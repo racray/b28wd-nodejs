@@ -28,7 +28,31 @@ router.route('/signup')
     const result = await PostUsers({username, password: hashPassword});
     response.send(result);
 })
+.get(async (request, response) => {
 
+    const {username,password} = request.body;
+
+
+    const userNameDB = await CheckUserName(username)
+
+    if(userNameDB){
+
+        response.status(400).send({message:"Username already exists"})
+        return;
+
+    }
+
+    if(password.length<8){
+        response.status(400).send({message:"Enter longer password"})
+        return;
+    }
+
+    const hashPassword = await genPassword(password);
+    console.log(hashPassword);
+
+    const result = await PostUsers({username, password: hashPassword});
+    response.send(result);
+})
 
 
 
