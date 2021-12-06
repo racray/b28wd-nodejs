@@ -34,7 +34,6 @@ export async function genPassword(password) {
     const NO_OF_ROUNDS = 10;
     const salt = await bcrypt.genSalt(NO_OF_ROUNDS);
     const hashPassword = await bcrypt.hash(password,salt);
-    console.log(hashPassword);
     return hashPassword;
 }
 
