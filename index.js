@@ -38,7 +38,7 @@ async function createConnection(){
 export const client = await createConnection();
 
 app.get('/',(request,response)=>{
-    response.send("Hello 🌏D🌍🌎");
+    response.send("Hello 🌏🌍🌎");
 })
 
 app.use('/movies',moviesRouter);
