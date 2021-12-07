@@ -45,6 +45,20 @@ router.route('/login')
     }
 })
 
+router.route('/forgotpass')
+.post(async (request, response)=>{
+    const {username} = request.body;
+    const userFromDB = await CheckUserName(username);
+    if(!userFromDB){
+        response.status(400).send({message:"Invalid Username"})
+        return;
+    }
+    else{
+        response.send({message:"A confirmation mail will be sent on your email"})
+        return;
+    }
+
+})
 
 
 export const usersRouter = router;
