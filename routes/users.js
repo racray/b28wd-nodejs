@@ -19,11 +19,6 @@ router.route('/signup')
 
     }
 
-    if(password.length<8){
-        response.status(400).send({message:"Enter longer password"})
-        return;
-    }
-
     const hashPassword = await genPassword(password);
     console.log(hashPassword);
 
@@ -37,7 +32,7 @@ router.route('/login')
     const {username, password} = request.body;
     const userFromDB = await CheckUserName(username);
     if(!userFromDB){
-        response.send({message:"Invalid credentials"})
+        response.status(400).send({message:"Invalid credentials"})
         return;
     }
     const storedPassword = userFromDB.password;
@@ -46,7 +41,7 @@ router.route('/login')
         response.send({message:"Successfully logged in"})
 
     }else{
-        response.send({message:"Invalid credentials"});
+        response.status(400).send({message:"Invalid credentials"});
     }
 })
 
