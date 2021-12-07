@@ -47,7 +47,7 @@ router.route('/login')
 
 router.route('/forgotpass')
 .post(async (request, response)=>{
-    const {username,password} = request.body;
+    const {username} = request.body;
     const userFromDB = await CheckUserName(username);
     if(!userFromDB){
         response.status(400).send({message:"Invalid Username"})
