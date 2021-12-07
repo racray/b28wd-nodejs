@@ -52,6 +52,9 @@ router.route('/forgotpass')
     if(!userFromDB){
         response.status(400).send({message:"Invalid Username"})
         return;
+    }else{
+        response.send({message:"Proceeding to login"})
+ 
     }
 
 
